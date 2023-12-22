@@ -14,7 +14,7 @@ const mongoDB = async()=>{
                     console.log("ERROR", err);
                 }
                 else{
-                    console.log("data fetched");
+                    console.log();
                 }
             })
         }
