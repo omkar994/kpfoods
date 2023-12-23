@@ -15,7 +15,7 @@ const FoodItemSchema = new Schema({
             type : String,
             required : true
         },
-        //option : [{half : Number, full:Number}]
+        option : [{half : Number, full:Number}]
     
 });
 
