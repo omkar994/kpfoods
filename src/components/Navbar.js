@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 export default function navbar() {
     return (
         <div>
@@ -16,6 +16,9 @@ export default function navbar() {
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/login">Login</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/createuser">SignUp</Link>
                             </li>
 
                         </ul>
