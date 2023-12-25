@@ -41,4 +41,20 @@ router.post("/createfooitm", async (req, res) => {
 
 })
 
+router.post("/login", async(req, res)=>{
+    const email = req.body.email;
+    try {
+        const user = await User.findOne({email});
+        if(!user || user.email !==req.body.email || user.password !==req.body.password){
+            return res.status(400).json({error : "Invalid Creds"});
+        }
+        else{
+            console.log("logged in Sucess");
+            res.json({ success: true });
+        }
+    } catch (err) {
+        console.log("ERROR", err);
+    }
+})
+
 module.exports = router;

@@ -20,6 +20,9 @@ export default function navbar() {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/createuser">SignUp</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/createfooitm">Add new item</Link>
+                            </li>
 
                         </ul>
                     </div>

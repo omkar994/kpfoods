@@ -2,6 +2,7 @@ import './App.css';
 import Home from './screens/Home.js';
 import Login from './screens/Login.js';
 import Signup from './screens/Signup.js';
+import Fooditm from './screens/Fooditm.js';
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,6 +10,7 @@ import {
 } from "react-router-dom";
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js';
 import '../node_modules/bootstrap/dist/js/bootstrap.js';
+
 
 
 function App() {
@@ -19,7 +21,7 @@ function App() {
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/login" element={<Login />}></Route>
           <Route exact path="/createuser" element={<Signup />}></Route>
-
+          <Route exact path="/createfooitm" element={<Fooditm />}></Route>
         </Routes>
       </div>
     </Router>
