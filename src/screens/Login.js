@@ -22,6 +22,7 @@ export default function Login() {
         alert("invalid user or pass");
       }
       else{
+        localStorage.setItem("authToken", responseJSON.authToken);
         navigate("/");
       }
   }
