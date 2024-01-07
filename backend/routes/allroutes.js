@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/User');
 const FoodItm = require('../models/Fooditem');
 const FoodCat = require('../models/Foodcategory');
+const Order = require('../models/Orders');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
@@ -98,6 +99,53 @@ router.get("/getfoocategory", async (req, res) => {
     } catch (err) {
         console.log("ERROR", err.message);
         res.send("Something went wrong");
+    }
+});
+
+router.post("/createorder", async(req, res)=>{
+    const data = req.body.order_data;
+    await data.splice(0, 0, {Order_date : req.body.order_date});
+  
+
+    const eId = await Order.findOne({'email' : req.body.email}); 
+    if(eId==null){
+
+        try {
+            await Order.create({
+                email : req.body.email,
+                order_data : [data]
+            }).then(()=>{
+                res.json({success : true})
+            })
+        } catch (error) {
+            console.error(error.message);
+            //res.send(status, body);
+            
+        }
+      
+    }
+
+    else{
+        try {
+            await Order.findByIdAndUpdate({email : req.body.email},
+                { $push : {order_data : data} }).then(()=>{
+                    res.send({success : true});
+                })
+        } catch (error) {
+            console.error(error.message);
+            res.send("Server error", error.message);
+        }
+    }
+});
+
+router.post("/myorders", async(req, res)=>{
+
+    try {
+        const myOrders = await Order.findOne({"email" : req.body.email});
+        res.json({myOrders : myOrders});
+    } catch (error) {
+        console.error(error.message);
+            res.send("Server error", error.message);
     }
 });
 

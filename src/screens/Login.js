@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 export default function Login() {
 
@@ -23,6 +23,7 @@ export default function Login() {
       }
       else{
         localStorage.setItem("authToken", responseJSON.authToken);
+        localStorage.setItem("userEmail", credentials.email);
         navigate("/");
       }
   }
@@ -46,7 +47,8 @@ export default function Login() {
           <input type="password" className="form-control" name='password' value={credentials.password} onChange={onChange} />
         </div>
 
-        <button type="Login" className="m-3 btn btn-primary">Submit</button>
+        <button type="Login" className="m-3 btn btn-primary">Login</button>
+        <Link className="btn bg-danger text-green mx-1" to="/createuser">SignUp</Link>
 
       </form>
     </div>
