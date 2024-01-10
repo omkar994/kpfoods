@@ -127,7 +127,7 @@ router.post("/createorder", async(req, res)=>{
 
     else{
         try {
-            await Order.findByIdAndUpdate({email : req.body.email},
+            await Order.findOneAndUpdate({email : req.body.email},
                 { $push : {order_data : data} }).then(()=>{
                     res.send({success : true});
                 })

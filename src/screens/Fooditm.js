@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {baseURL} from  '../lib/index.js';
 
 
 export default function Fooditm() {
@@ -6,7 +7,7 @@ export default function Fooditm() {
 
     const handleSubmit= async(event)=>{
         event.preventDefault();
-        const response = await fetch("http://localhost:5000/api/createfooitm",
+        const response = await fetch(`${baseURL}/api/createfooitm`,
                 {
                     method:"POST",
                     headers:{"Content-Type":"application/json"},

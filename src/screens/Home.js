@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
 import Card from '../components/Card.js';
+import {baseURL} from  '../lib/index.js';
 //import Carousel from '../components/Carousel.js';
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
 
 
   const loadData = async () => {
-    let responseFooItm = await fetch("http://localhost:5000/api/getfooitems",
+    let responseFooItm = await fetch(`${baseURL}/api/getfooitems`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" }
@@ -20,7 +21,7 @@ export default function Home() {
       });
     responseFooItm = await responseFooItm.json();
 
-    let responseFooCat = await fetch("http://localhost:5000/api/getfoocategory",
+    let responseFooCat = await fetch(`${baseURL}/api/getfoocategory`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" }
